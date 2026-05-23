@@ -1,0 +1,225 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-50: #eef8ff;
+  --blue-100: #d9f0ff;
+  --blue-200: #b7e3ff;
+  --blue-300: #7fd0ff;
+  --blue-400: #38bdf8;
+  --blue-500: #0ea5e9;
+  --blue-600: #0284c7;
+  --blue-900: #082f49;
+
+  --bg: var(--blue-50);
+  --bg-soft: var(--blue-100);
+
+  --surface: #ffffff;
+  --surface-elev: #f8fcff;
+
+  --text: #0f172a;
+  --text-muted: #475569;
+
+  --brand: var(--blue-500);
+  --brand-strong: var(--blue-600);
+  --brand-soft: var(--blue-200);
+
+  --stroke: rgba(15, 23, 42, 0.12);
+
+  --shadow-sm: 0 8px 18px rgba(15, 23, 42, 0.10);
+  --shadow-md: 0 18px 40px rgba(15, 23, 42, 0.15);
+
+  --radius: 18px;
+}
+
+/* BODY */
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Verdana", "Tahoma", sans-serif;
+  background: linear-gradient(160deg, var(--blue-100) 0%, var(--blue-50) 45%, var(--blue-200) 100%);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--stroke);
+  padding: 18px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Segoe UI", "Verdana", "Tahoma", sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.5px;
+  color: var(--brand-strong);
+}
+
+/* NAV */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0 0;
+  margin: 0;
+}
+
+nav a,
+.active {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--brand-strong);
+  background: var(--brand-soft);
+}
+
+.active {
+  color: var(--brand-strong);
+  background: var(--brand-soft);
+}
+
+/* MAIN */
+main {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+  flex: 1;
+}
+
+/* ESPACIADO GLOBAL */
+main > * {
+  margin-bottom: 24px;
+}
+
+/* TITULOS */
+h2 {
+  color: var(--brand);
+  text-align: center;
+  font-family: "Segoe UI", "Verdana", "Tahoma", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.hero h2 {
+  text-align: left;
+  text-transform: none;
+  font-size: 1.5rem;
+}
+
+h3 {
+  color: var(--text);
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--surface-elev), var(--bg-soft));
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+/* GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+/* CARDS */
+.card {
+  background-color: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* IMÁGENES EN CARDS */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.map-card img {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+/* IMAGEN PRINCIPAL */
+.main-img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--blue-900);
+  color: var(--blue-200);
+  text-align: center;
+  padding: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
