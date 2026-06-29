@@ -170,10 +170,14 @@ main > * {
 }
 
 .mapa-terminal{
-  width:100%;
-  height:auto;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow-md);
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 1200 / 1259;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
 }
 
 /* LISTAS */
