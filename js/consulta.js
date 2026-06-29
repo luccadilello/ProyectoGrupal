@@ -1,7 +1,7 @@
 const destinos = {
   "liniers": {
-    servicio: "Línea 8 Semirrápido",
-    plataforma: "Terminal A - Ezeiza",
+    transporte: "Línea 8 Semirrápido",
+    sector: "Terminal A - Ezeiza",
     tiempo: "45 minutos",
     costo: "$1.200",
     accesibilidad: [
@@ -14,8 +14,8 @@ const destinos = {
   },
 
   "aeroparque": {
-    servicio: "Servicio Ejecutivo Tienda León",
-    plataforma: "Sector Ejecutivo",
+    transporte: "Servicio Ejecutivo Tienda León",
+    sector: "Sector Ejecutivo",
     tiempo: "1h 20min",
     costo: "$16.000",
     accesibilidad: [
@@ -27,8 +27,8 @@ const destinos = {
   },
 
   "constitucion": {
-    servicio: "Línea 51",
-    plataforma: "Terminal C",
+    transporte: "Línea 51",
+    sector: "Terminal C",
     tiempo: "60-90 minutos",
     costo: "Tarifa SUBE",
     accesibilidad: [
@@ -40,8 +40,8 @@ const destinos = {
   },
 
   "ezeiza estacion": {
-    servicio: "Línea 518",
-    plataforma: "Puente 12",
+    transporte: "Línea 518",
+    sector: "Puente 12",
     tiempo: "25-35 minutos",
     costo: "Tarifa SUBE",
     accesibilidad: [
@@ -52,8 +52,16 @@ const destinos = {
     frecuencia: "15-20 minutos"
   }
 };
+
 const boton = document.getElementById("buscar");
 const resultado = document.getElementById("resultado");
+
+const transporte = document.getElementById("transporte");
+const sector = document.getElementById("sector");
+const tiempo = document.getElementById("tiempo");
+const costo = document.getElementById("costo");
+const frecuencia = document.getElementById("frecuencia");
+const accesibilidad = document.getElementById("accesibilidad");
 
 boton.addEventListener("click", () => {
 
@@ -81,18 +89,14 @@ boton.addEventListener("click", () => {
         return;
     }
 
-    resultado.innerHTML = `
-        <h3>✔ Resultado encontrado</h3>
+    transporte.textContent = info.transporte;
+    sector.textContent = info.sector;
+    tiempo.textContent = info.tiempo;
+    costo.textContent = info.costo;
+    frecuencia.textContent = info.frecuencia;
 
-        <p><b>Servicio:</b> ${info.servicio}</p>
-        <p><b>Plataforma:</b> ${info.plataforma}</p>
-        <p><b>Tiempo estimado:</b> ${info.tiempo}</p>
-        <p><b>Costo:</b> ${info.costo}</p>
-        <p><b>Frecuencia:</b> ${info.frecuencia}</p>
+    accesibilidad.innerHTML = info.accesibilidad
+        .map(item => `<li>${item}</li>`)
+        .join("");
 
-        <h4>Accesibilidad</h4>
-        <ul>
-            ${info.accesibilidad.map(a => `<li>${a}</li>`).join("")}
-        </ul>
-    `;
 });
