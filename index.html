@@ -15,16 +15,16 @@
     <h1>Ezeiza Connect Hub</h1>
 
     <nav>
-    <ul>
-        <li><span class="active">Inicio</span></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="consulta.html">Consulta de viajes</a></li>
-        <li><a href="transporte.html">Transportes</a></li>
-        <li><a href="accesibilidad.html">Accesibilidad</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="mapa.html">Mapa</a></li>
-    </ul>
-</nav>
+        <ul>
+            <li><span class="active">Inicio</span></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="consulta.html">Consulta de viajes</a></li>
+            <li><a href="transporte.html">Transportes</a></li>
+            <li><a href="accesibilidad.html">Accesibilidad</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+        </ul>
+    </nav>
 
 </header>
 
@@ -47,33 +47,18 @@
     <section class="cards-grid">
 
         <div class="card">
-
             <h3>Servicios Ejecutivos</h3>
-
-            <p>
-                Transporte premium con conexión rápida hacia CABA y Aeroparque.
-            </p>
-
+            <p>Transporte premium con conexión rápida hacia CABA y Aeroparque.</p>
         </div>
 
         <div class="card">
-
             <h3>Colectivos Urbanos</h3>
-
-            <p>
-                Líneas urbanas y regionales que conectan Ezeiza con distintos puntos del AMBA.
-            </p>
-
+            <p>Líneas urbanas y regionales que conectan Ezeiza con distintos puntos del AMBA.</p>
         </div>
 
         <div class="card">
-
             <h3>Micros de Larga Distancia</h3>
-
-            <p>
-                Servicios hacia distintas provincias del país desde las terminales del aeropuerto.
-            </p>
-
+            <p>Servicios hacia distintas provincias del país desde las terminales del aeropuerto.</p>
         </div>
 
     </section>
@@ -90,11 +75,28 @@
 
     </section>
 
+    <!-- CHATBOT -->
+    <section class="card">
+
+        <h3>Chatbot de ayuda</h3>
+
+        <input type="text" id="pregunta" placeholder="Escribí tu consulta...">
+        <br><br>
+
+        <button id="enviar">Enviar</button>
+
+        <div id="respuesta"></div>
+
+    </section>
+
 </main>
 
 <footer>
     <p>© 2026 Ezeiza Connect Hub - Sky Consulting</p>
 </footer>
+
+<!-- SCRIPT CHATBOT -->
+<script src="js/chatbot.js"></script>
 
 </body>
 
