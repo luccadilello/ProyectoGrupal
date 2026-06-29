@@ -169,6 +169,13 @@ main > * {
   box-shadow: var(--shadow-md);
 }
 
+.mapa-terminal{
+  width:100%;
+  height:auto;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-md);
+}
+
 /* LISTAS */
 .card ul {
   padding-left: 22px;
