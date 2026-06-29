@@ -169,13 +169,13 @@ main > * {
   box-shadow: var(--shadow-md);
 }
 
-.mapa-terminal{
+.card img.mapa-terminal {
   width: 100%;
   max-width: 900px;
-  aspect-ratio: 1200 / 1259;
+  height: auto;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
 }
