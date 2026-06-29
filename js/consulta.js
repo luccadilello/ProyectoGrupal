@@ -1,5 +1,6 @@
 const destinos = {
   "liniers": {
+    nombre: "Liniers",
     transporte: "Línea 8 Semirrápido",
     sector: "Terminal A - Ezeiza",
     tiempo: "45 minutos",
@@ -14,6 +15,7 @@ const destinos = {
   },
 
   "aeroparque": {
+    nombre: "Aeroparque",
     transporte: "Servicio Ejecutivo Tienda León",
     sector: "Sector Ejecutivo",
     tiempo: "1h 20min",
@@ -27,6 +29,7 @@ const destinos = {
   },
 
   "constitucion": {
+    nombre: "Constitución",
     transporte: "Línea 51",
     sector: "Terminal C",
     tiempo: "60-90 minutos",
@@ -40,6 +43,7 @@ const destinos = {
   },
 
   "ezeiza estacion": {
+    nombre: "Estación Ezeiza",
     transporte: "Línea 518",
     sector: "Puente 12",
     tiempo: "25-35 minutos",
@@ -54,49 +58,102 @@ const destinos = {
 };
 
 const boton = document.getElementById("buscar");
+const inputDestino = document.getElementById("destino");
 const resultado = document.getElementById("resultado");
 
-const transporte = document.getElementById("transporte");
-const sector = document.getElementById("sector");
-const tiempo = document.getElementById("tiempo");
-const costo = document.getElementById("costo");
-const frecuencia = document.getElementById("frecuencia");
-const accesibilidad = document.getElementById("accesibilidad");
+// Normaliza texto: minúsculas, sin acentos y sin espacios sobrantes
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .trim();
+}
 
-boton.addEventListener("click", () => {
+// Búsqueda parcial: encuentra una clave que contenga (o esté contenida en) lo escrito
+function buscarDestino(consulta) {
+  if (!consulta) return null;
 
-    const destino = document
-        .getElementById("destino")
-        .value
-        .toLowerCase()
-        .trim();
-
-    const info = destinos[destino];
-
-    resultado.style.display = "block";
-
-    if (!info) {
-        resultado.innerHTML = `
-            <h3>❌ No se encontró el destino</h3>
-            <p>Probá con:</p>
-            <ul>
-                <li>Liniers</li>
-                <li>Aeroparque</li>
-                <li>Constitución</li>
-                <li>Ezeiza estacion</li>
-            </ul>
-        `;
-        return;
+  for (const clave in destinos) {
+    const claveNorm = normalizar(clave);
+    if (claveNorm.includes(consulta) || consulta.includes(claveNorm)) {
+      return destinos[clave];
     }
+  }
+  return null;
+}
 
-    transporte.textContent = info.transporte;
-    sector.textContent = info.sector;
-    tiempo.textContent = info.tiempo;
-    costo.textContent = info.costo;
-    frecuencia.textContent = info.frecuencia;
+function mostrarResultado() {
+  const consulta = normalizar(inputDestino.value);
 
-    accesibilidad.innerHTML = info.accesibilidad
-        .map(item => `<li>${item}</li>`)
-        .join("");
+  resultado.style.display = "block";
 
+  if (!consulta) {
+    resultado.innerHTML = `
+      <div class="card">
+        <h3>Ingresá un destino</h3>
+        <p>Escribí a dónde querés viajar para ver el transporte recomendado.</p>
+      </div>`;
+    return;
+  }
+
+  const info = buscarDestino(consulta);
+
+  if (!info) {
+    resultado.innerHTML = `
+      <div class="card">
+        <h3>No se encontró el destino</h3>
+        <p>Probá con alguno de estos destinos disponibles:</p>
+        <ul>
+          <li>Liniers</li>
+          <li>Aeroparque</li>
+          <li>Constitución</li>
+          <li>Estación Ezeiza</li>
+        </ul>
+      </div>`;
+    return;
+  }
+
+  const chips = info.accesibilidad.map(item => `<li>${item}</li>`).join("");
+
+  resultado.innerHTML = `
+    <div class="route-box">
+      <div class="route-header">
+        <h3>Cómo llegar a ${info.nombre}</h3>
+        <span class="badge">Recomendado</span>
+      </div>
+      <div class="route-grid">
+        <div class="route-cell">
+          <span class="label">Transporte</span>
+          <span class="data">${info.transporte}</span>
+        </div>
+        <div class="route-cell">
+          <span class="label">Sector / Andén</span>
+          <span class="data">${info.sector}</span>
+        </div>
+        <div class="route-cell">
+          <span class="label">Tiempo estimado</span>
+          <span class="data">${info.tiempo}</span>
+        </div>
+        <div class="route-cell">
+          <span class="label">Costo estimado</span>
+          <span class="data">${info.costo}</span>
+        </div>
+        <div class="route-cell">
+          <span class="label">Frecuencia</span>
+          <span class="data">${info.frecuencia}</span>
+        </div>
+      </div>
+      <div class="route-foot">
+        <h4>Accesibilidad</h4>
+        <ul class="chips">${chips}</ul>
+      </div>
+    </div>`;
+}
+
+boton.addEventListener("click", mostrarResultado);
+
+// Permite buscar presionando Enter
+inputDestino.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") mostrarResultado();
 });
