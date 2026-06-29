@@ -1,21 +1,54 @@
-const boton = document.getElementById("buscar");
-const resultado = document.getElementById("resultado");
+const destinos = {
+  "liniers": {
+    servicio: "Línea 8 Semirrápido",
+    plataforma: "Terminal A - Ezeiza",
+    tiempo: "45 minutos",
+    costo: "$1.200",
+    accesibilidad: [
+      "Piso bajo",
+      "Rampas",
+      "Aire acondicionado",
+      "Espacio para equipaje"
+    ],
+    frecuencia: "Cada 15-20 minutos"
+  },
 
-boton.addEventListener("click", () => {
+  "aeroparque": {
+    servicio: "Servicio Ejecutivo Tienda León",
+    plataforma: "Sector Ejecutivo",
+    tiempo: "1h 20min",
+    costo: "$16.000",
+    accesibilidad: [
+      "Espacios para silla de ruedas",
+      "Señalización clara",
+      "Asistencia al pasajero"
+    ],
+    frecuencia: "Cada 1 hora"
+  },
 
-    const destino = document.getElementById("destino").value.toLowerCase().trim();
+  "constitucion": {
+    servicio: "Línea 51",
+    plataforma: "Terminal C",
+    tiempo: "60-90 minutos",
+    costo: "Tarifa SUBE",
+    accesibilidad: [
+      "Rampas",
+      "Asientos prioritarios",
+      "Piso bajo en unidades"
+    ],
+    frecuencia: "Alta frecuencia"
+  },
 
-    if (destino === "") {
-        resultado.style.display = "block";
-        resultado.innerHTML = "<p>⚠️ Ingresá un destino.</p>";
-        return;
-    }
-
-    resultado.style.display = "block";
-
-    resultado.innerHTML = `
-        <h3>Resultado de búsqueda</h3>
-        <p>Destino ingresado: <b>${destino}</b></p>
-        <p>Aquí después vamos a mostrar el servicio recomendado, horarios, costo y accesibilidad.</p>
-    `;
-});
+  "ezeiza estacion": {
+    servicio: "Línea 518",
+    plataforma: "Puente 12",
+    tiempo: "25-35 minutos",
+    costo: "Tarifa SUBE",
+    accesibilidad: [
+      "Piso bajo",
+      "Rampas",
+      "Espacio para equipaje"
+    ],
+    frecuencia: "15-20 minutos"
+  }
+};
