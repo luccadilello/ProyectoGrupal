@@ -137,8 +137,10 @@ main > * {
   box-shadow: var(--shadow-md);
 }
 
+.card h2,
 .card h3 {
   margin-top: 0;
+  color: var(--blue-500);
 }
 
 .card a {
@@ -167,12 +169,30 @@ main > * {
   box-shadow: var(--shadow-md);
 }
 
+/* LISTAS */
+.card ul {
+  padding-left: 22px;
+  color: var(--text-soft);
+}
+
+.card li {
+  margin-bottom: 8px;
+}
+
+.card strong {
+  color: var(--blue-500);
+}
+
 /* FOOTER */
 footer {
   background-color: var(--blue-900);
   color: white;
   text-align: center;
   padding: 18px;
+}
+
+footer p {
+  margin: 6px 0;
 }
 
 /* RESPONSIVE */
