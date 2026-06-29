@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Consulta de Viajes | Ezeiza Connect Hub</title>
+
+    <link rel="stylesheet" href="estilos/css1.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Ezeiza Connect Hub</h1>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><span class="active">Consulta de Viajes</span></li>
+            <li><a href="transporte.html">Transportes</a></li>
+            <li><a href="accesibilidad.html">Accesibilidad</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="hero">
+
+        <h2>Consulta de Viajes</h2>
+
+        <p>
+            Ingresá un destino para conocer el transporte recomendado,
+            horarios, costo estimado, tiempo de viaje y características
+            de accesibilidad.
+        </p>
+
+    </section>
+
+    <section class="card">
+
+        <h3>¿A dónde querés viajar?</h3>
+
+        <input
+            type="text"
+            id="destino"
+            placeholder="Ej.: Aeroparque, Liniers, Constitución">
+
+        <br><br>
+
+        <button id="buscar">
+            Consultar
+        </button>
+
+    </section>
+
+    <section
+        id="resultado"
+        class="card"
+        style="display:none;">
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>© 2026 Ezeiza Connect Hub - Sky Consulting</p>
+
+</footer>
+
+<script src="js/consulta.js"></script>
+
+</body>
+
+</html>
